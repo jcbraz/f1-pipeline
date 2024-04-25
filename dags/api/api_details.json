@@ -1,17 +1,5 @@
 [
     {
-        "base_url": "https://api.openf1.org/v1/car_data",
-        "attributes_to_remove": [],
-        "session_keys_range": {
-            "start": 8000,
-            "end": 10000
-        },
-        "driver_numbers_range": {
-            "start": 1,
-            "end": 500
-        }
-    },
-    {
         "base_url": "https://api.openf1.org/v1/drivers",
         "attributes_to_remove": [
             "broadcast_name",
@@ -30,26 +18,6 @@
         }
     },
     {
-        "base_url": "https://api.openf1.org/v1/laps",
-        "attributes_to_remove": [],
-        "session_keys_range": {
-            "start": 8000,
-            "end": 10000
-        }
-    },
-    {
-        "base_url": "https://api.openf1.org/v1/location",
-        "attributes_to_remove": [],
-        "session_keys_range": {
-            "start": 8000,
-            "end": 10000
-        },
-        "driver_numbers_range": {
-            "start": 1,
-            "end": 500
-        }
-    },
-    {
         "base_url": "https://api.openf1.org/v1/pit",
         "attributes_to_remove": []
     },
@@ -64,5 +32,37 @@
     {
         "base_url": "https://api.openf1.org/v1/weather",
         "attributes_to_remove": []
+    },
+    {
+        "base_url": "https://api.openf1.org/v1/laps",
+        "attributes_to_remove": [],
+        "session_keys_range": {
+            "start": 8000,
+            "end": 10000
+        }
+    },
+    {
+        "base_url": "https://api.openf1.org/v1/car_data",
+        "attributes_to_remove": [],
+        "session_keys_range": {
+            "start": 8000,
+            "end": 10000
+        },
+        "driver_numbers_range": {
+            "start": 1,
+            "end": 500
+        }
+    },
+    {
+        "base_url": "https://api.openf1.org/v1/location",
+        "attributes_to_remove": [],
+        "session_keys_range": {
+            "start": 8000,
+            "end": 10000
+        },
+        "driver_numbers_range": {
+            "start": 1,
+            "end": 500
+        }
     }
 ]
