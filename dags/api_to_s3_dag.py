@@ -25,6 +25,75 @@ session = boto3.Session(
 
 s3 = session.client("s3", endpoint_url="https://s3.cubbit.eu")
 
+url_details = [
+    {
+        "base_url": "https://api.openf1.org/v1/car_data",
+        "attributes_to_remove": [],
+        "session_keys_range": {
+            "start": 8000,
+            "end": 10000
+        },
+        "driver_numbers_range": {
+            "start": 1,
+            "end": 500
+        }
+    },
+    {
+        "base_url": "https://api.openf1.org/v1/drivers",
+        "attributes_to_remove": [
+            "broadcast_name",
+            "first_name",
+            "headshot_url",
+            "last_name",
+            "team_colour"
+        ]
+    },
+    {
+        "base_url": "https://api.openf1.org/v1/intervals",
+        "attributes_to_remove": [],
+        "session_keys_range": {
+            "start": 8000,
+            "end": 10000
+        }
+    },
+    {
+        "base_url": "https://api.openf1.org/v1/laps",
+        "attributes_to_remove": [],
+        "session_keys_range": {
+            "start": 8000,
+            "end": 10000
+        }
+    },
+    {
+        "base_url": "https://api.openf1.org/v1/location",
+        "attributes_to_remove": [],
+        "session_keys_range": {
+            "start": 8000,
+            "end": 10000
+        },
+        "driver_numbers_range": {
+            "start": 1,
+            "end": 500
+        }
+    },
+    {
+        "base_url": "https://api.openf1.org/v1/pit",
+        "attributes_to_remove": []
+    },
+    {
+        "base_url": "https://api.openf1.org/v1/race_control",
+        "attributes_to_remove": []
+    },
+    {
+        "base_url": "https://api.openf1.org/v1/stints",
+        "attributes_to_remove": []
+    },
+    {
+        "base_url": "https://api.openf1.org/v1/weather",
+        "attributes_to_remove": []
+    }
+]
+
 def fetch_and_validate_data(
     url_details: Dict[str, Union[str, int]], schema: BaseModel, attributes_to_remove: list[str]
 ) -> dict:
@@ -104,13 +173,6 @@ with DAG(
 ) as dag:
     
     try:
-        url_details = []
-        with open("./dags/api/api_details.json", "r") as f:
-            url_details = json.load(f)
-            logger.info("API details loaded successfully!")
-
-        if len(url_details) == 0:
-            raise FileNotFoundError("No API details found!")
         
         schema_list = [api_schemas.CarInfoSchema, api_schemas.DriverInfoSchema, api_schemas.GapInfoSchema, api_schemas.LapInfoSchema, api_schemas.PositionInfoSchema, api_schemas.GapInfoSchema, api_schemas.LapInfoSchema, api_schemas.PitStopInfoSchema, api_schemas.RaceControlInfoSchema, api_schemas.TyreInfoSchema, api_schemas.WeatherInfoSchema]
 
