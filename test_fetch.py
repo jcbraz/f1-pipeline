@@ -1,8 +1,8 @@
 import logging
 from airflow.exceptions import AirflowBadRequest
 from pydantic import BaseModel, ValidationError
-from utils import call_api
-from schemas import CarInfoSchema
+from utils.utils import call_api
+from api.api_schemas import CarInfoSchema
 import boto3
 import os
 import pickle

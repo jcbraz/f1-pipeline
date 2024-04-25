@@ -1,7 +1,26 @@
 from pydantic import BaseModel
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
+
+class SessionKeysRange(BaseModel):
+    start: int
+    end: int
+
+
+class DriverNumbersRange(BaseModel):
+    start: int
+    end: int
+
+
+class UrlDetailsSchema(BaseModel):
+    base_url: str
+    attributes_to_keep: List[str]
+    session_keys_range: Optional[SessionKeysRange]
+    driver_numbers_range: Optional[DriverNumbersRange]
+
+
+# API schemas
 class CarInfoSchema(BaseModel):
     driver_number: int
     rpm: int
@@ -58,7 +77,17 @@ class LapInfoSchema(BaseModel):
     st_speed: int
 
 
-class PitStopInfo(BaseModel):
+class PositionInfoSchema(BaseModel):
+    date: datetime
+    driver_number: int
+    meeting_key: int
+    session_key: int
+    x: int
+    y: int
+    z: int
+
+
+class PitStopInfoSchema(BaseModel):
     date: datetime
     driver_number: int
     lap_number: int
@@ -66,3 +95,39 @@ class PitStopInfo(BaseModel):
     pit_duration: float
     session_key: int
 
+
+class RaceControlInfoSchema(BaseModel):
+    category: str
+    date: datetime
+    driver_number: int
+    flag: str
+    lap_number: int
+    meeting_key: int
+    message: str
+    scope: str
+    sector: Optional[str]
+    session_key: int
+
+
+class TyreInfoSchema(BaseModel):
+    compound: str
+    driver_number: int
+    lap_end: int
+    lap_start: int
+    meeting_key: int
+    session_key: int
+    stint_number: int
+    tyre_age_at_start: int
+
+
+class WeatherInfoSchema(BaseModel):
+    air_temperature: float
+    date: datetime
+    humidity: int
+    meeting_key: int
+    pressure: float
+    rainfall: int
+    session_key: int
+    track_temperature: float
+    wind_direction: int
+    wind_speed: float
