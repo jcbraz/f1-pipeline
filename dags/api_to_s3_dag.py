@@ -10,7 +10,6 @@ from airflow import DAG
 from airflow.operators.python import PythonVirtualenvOperator
 from airflow.exceptions import AirflowBadRequest
 from datetime import timedelta
-from typing import Dict, List, Union
 from utils.utils import call_api
 from api import api_schemas
 
@@ -67,7 +66,7 @@ def fetch_and_validate_data(
 
 
 def fetch_and_store_dag(
-    urls_details: List[Dict[str, Union[str, int]]],
+    urls_details: list[dict],
     schemas: list[BaseModel],
     bucket_name: str,
 ) -> None:
@@ -111,7 +110,7 @@ default_args = {
 
 with DAG(
     dag_id="API-to-S3",
-    start_date=pendulum.now("Europe/Rome"),  # change this afterwards
+    start_date=pendulum.now("Europe/Rome"),
     default_args=default_args,
     description="OpenF1 API to S3 bucket DAG",
     catchup=False,
@@ -153,6 +152,7 @@ with DAG(
             requirements=[
                 "boto3==1.18.63",
                 "pydantic==2.7.0",
+                "pyarrow==16.0.0",
                 "pendulum==3.0.0",
                 "pandas==2.2.2",
             ],

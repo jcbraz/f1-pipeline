@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
-from typing import List, Optional
+from typing import Optional
 
 
 class SessionKeysRange(BaseModel):
@@ -15,7 +15,7 @@ class DriverNumbersRange(BaseModel):
 
 class UrlDetailsSchema(BaseModel):
     base_url: str
-    attributes_to_remove: List[str]
+    attributes_to_remove: list[str]
     session_keys_range: Optional[SessionKeysRange] = None
     driver_numbers_range: Optional[DriverNumbersRange] = None
 
@@ -70,9 +70,9 @@ class LapInfoSchema(BaseModel):
     lap_duration: float
     lap_number: int
     meeting_key: int
-    segments_sector_1: List[int]
-    segments_sector_2: List[int]
-    segments_sector_3: List[int]
+    segments_sector_1: list[int]
+    segments_sector_2: list[int]
+    segments_sector_3: list[int]
     session_key: int
     st_speed: int
 
