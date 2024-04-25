@@ -15,9 +15,9 @@ class DriverNumbersRange(BaseModel):
 
 class UrlDetailsSchema(BaseModel):
     base_url: str
-    attributes_to_keep: List[str]
-    session_keys_range: Optional[SessionKeysRange]
-    driver_numbers_range: Optional[DriverNumbersRange]
+    attributes_to_remove: List[str]
+    session_keys_range: Optional[SessionKeysRange] = None
+    driver_numbers_range: Optional[DriverNumbersRange] = None
 
 
 # API schemas

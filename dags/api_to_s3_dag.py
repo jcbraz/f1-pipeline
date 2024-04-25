@@ -15,7 +15,7 @@ from utils.utils import call_api
 from api import api_schemas
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.WARNING)
+logger.setLevel(logging.INFO)
 
 session = boto3.Session(
     aws_access_key_id=os.environ["CUBBIT_ACCESS_KEY_ID"],
@@ -27,25 +27,27 @@ s3 = session.client("s3", endpoint_url="https://s3.cubbit.eu")
 
 
 def fetch_and_validate_data(
-    url_details: Dict[str, Union[str, int]],
+    url_details: dict,
     schema: BaseModel,
     attributes_to_remove: list[str],
 ) -> dict:
 
+    response_list = []
     try:
         response_list = call_api(url_details)
+        if not response_list:
+            raise AirflowBadRequest("No data fetched from API!")
         logger.info(
             f"Data fetched successfully from the base url {url_details['base_url']}"
         )
-        print(response_list)
     except AirflowBadRequest as e:
         logger.error(f"Error on the API call: {e}")
 
     validated_data = []
-    for dict_item in response_list:
+    for i, dict_item in enumerate(response_list):
         try:
             validated_item = schema(**dict_item)
-            logger.info(f"Data validated successfully for item: {dict_item}")
+            logger.info(f"Data validated successfully for item {i}")
             validated_data.append(validated_item)
         except ValidationError as e:
             logger.error(f"Validation error for item: {dict_item}\n{e}")
@@ -71,23 +73,26 @@ def fetch_and_store_dag(
 ) -> None:
 
     for url_details, schema in zip(urls_details, schemas):
+        logger.info(f"Fetching data from {url_details['base_url']}...")
+        data_dict = fetch_and_validate_data(
+            url_details, schema, url_details["attributes_to_remove"]
+        )
+
+        if not data_dict:
+            raise AirflowBadRequest("No data fetched or properly validated from API!")
+        df = pd.DataFrame(data_dict)
+        serialized_data_buffer = BytesIO()
+        df.to_parquet(serialized_data_buffer, compression="snappy")
+
+        base_url_without_query = url_details["base_url"].split("?")[0]
         try:
-            data_dict = fetch_and_validate_data(
-                url_details["base_url"], schema, url_details["attributes_to_keep"]
-            )
-            if not data_dict:
-                raise AirflowBadRequest(
-                    "No data fetched or properly validated from API!"
-                )
-
-            df = pd.DataFrame(data_dict)
-            serialized_data_buffer = BytesIO()
-            df.to_parquet(serialized_data_buffer, compression="snappy")
-
             s3.put_object(
                 Bucket=bucket_name,
-                Key=f"{url_details['base_url'].split('?')[0].split('/')[-1]}.parquet",
+                Key=f"{base_url_without_query.split('/')[-1]}.parquet",
                 Body=serialized_data_buffer.getvalue(),
+            )
+            logger.info(
+                f"Data from {base_url_without_query} stored successfully in S3!"
             )
         except Exception as e:
             logger.error(f"Error on the S3 insertion: {e}")
@@ -102,6 +107,7 @@ default_args = {
     "retries": 3,
     "retry_delay": timedelta(minutes=2),
 }
+
 
 with DAG(
     dag_id="API-to-S3",
@@ -123,17 +129,17 @@ with DAG(
             raise FileNotFoundError("No API details found!")
 
         schema_list = [
-            api_schemas.CarInfoSchema,
             api_schemas.DriverInfoSchema,
             api_schemas.GapInfoSchema,
             api_schemas.LapInfoSchema,
-            api_schemas.PositionInfoSchema,
             api_schemas.GapInfoSchema,
-            api_schemas.LapInfoSchema,
             api_schemas.PitStopInfoSchema,
             api_schemas.RaceControlInfoSchema,
             api_schemas.TyreInfoSchema,
             api_schemas.WeatherInfoSchema,
+            api_schemas.LapInfoSchema,
+            api_schemas.CarInfoSchema,
+            api_schemas.PositionInfoSchema,
         ]
 
         assert (

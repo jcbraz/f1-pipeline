@@ -1,80 +1,86 @@
 import json
 import logging
 import itertools
-from functools import lru_cache
+import time
 from urllib.request import urlopen
 from typing import Union, List
 from api.api_schemas import UrlDetailsSchema
 from pydantic import ValidationError
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.WARNING)
+logger.setLevel(logging.INFO)
 
 
-@lru_cache(maxsize=None)
 def call_api(url_details: dict) -> Union[List[dict], None]:
 
     try:
-        validate_url_details = UrlDetailsSchema(**url_details).model_dump()
+        UrlDetailsSchema(**url_details)
     except ValidationError as ve:
         logger.error("Error validating url details", ve)
         return None
 
     responses = []
 
-    if "session_keys_range" in validate_url_details:
-        if "driver_numbers_range" in validate_url_details:
+    if "session_keys_range" in url_details:
+        if "driver_numbers_range" in url_details:
             for session_key in range(
-                validate_url_details["session_keys_range"][0],
-                validate_url_details["session_keys_range"][1],
+                url_details["session_keys_range"]["start"],
+                url_details["session_keys_range"]["end"],
             ):
                 for driver_number in range(
-                    validate_url_details["driver_numbers_range"][0],
-                    validate_url_details["driver_numbers_range"][1],
+                    url_details["driver_numbers_range"]["start"],
+                    url_details["driver_numbers_range"]["end"],
                 ):
-                    url_to_call = f"{validate_url_details['base_url']}?session_key={session_key}&driver_number={driver_number}"
-                    response = urlopen(url=url_to_call)
-                    if len(response) > 0:
-                        response_json = json.loads(response.read().decode("utf-8"))
-                        responses = list(
-                            itertools.chain(responses.copy(), response_json)
-                        )
+                    try:
+                        url_to_call = f"{url_details['base_url']}?session_key={session_key}&driver_number={driver_number}"
+                        response_call = urlopen(url=url_to_call)
+                        response = json.loads(response_call.read().decode("utf-8"))
+                        if len(response) > 0:
+                            responses = list(
+                                itertools.chain(responses.copy(), response)
+                            )
+                        time.sleep(1.5)
+                    except Exception as e:
+                        logger.error(f"Error calling the API in block 1: {e}")
         else:
             for session_key in range(
-                validate_url_details["session_keys_range"][0],
-                validate_url_details["session_keys_range"][1],
+                url_details["session_keys_range"]["start"],
+                url_details["session_keys_range"]["end"],
             ):
-                url_to_call = (
-                    f"{validate_url_details['base_url']}?session_key={session_key}"
-                )
-                response = urlopen(url=url_to_call)
-                if len(response) > 0:
-                    response_json = json.loads(response.read().decode("utf-8"))
-                    responses = list(itertools.chain(responses.copy(), response_json))
+                try:
+                    url_to_call = f"{url_details['base_url']}?session_key={session_key}"
+                    response_call = urlopen(url=url_to_call)
+                    response = json.loads(response_call.read().decode("utf-8"))
+                    if len(response) > 0:
+                        responses = list(itertools.chain(responses.copy(), response))
+                    time.sleep(1.5)
+                except Exception as e:
+                    logger.error(f"Error calling the API in block 2: {e}")
 
-    elif "driver_numbers_range" in validate_url_details:
+    elif "driver_numbers_range" in url_details:
         for driver_number in range(
-            validate_url_details["driver_numbers_range"][0],
-            validate_url_details["driver_numbers_range"][1],
+            url_details["driver_numbers_range"]["start"],
+            url_details["driver_numbers_range"]["end"],
         ):
-            url_to_call = (
-                f"{validate_url_details['base_url']}?driver_number={driver_number}"
-            )
-            response = urlopen(url=url_to_call)
-            if len(response) > 0:
-                response_json = json.loads(response.read().decode("utf-8"))
-                responses = list(itertools.chain(responses.copy(), response_json))
+            try:
+                url_to_call = f"{url_details['base_url']}?driver_number={driver_number}"
+                response_call = urlopen(url=url_to_call)
+                response = json.loads(response_call.read().decode("utf-8"))
+                if len(response) > 0:
+                    responses = list(itertools.chain(responses.copy(), response))
+
+                time.sleep(1.5)
+            except Exception as e:
+                logger.error(f"Error calling the API in block 3: {e}")
     else:
-        response = urlopen(url=validate_url_details["base_url"])
-        if len(response) > 0:
-            response_json = json.loads(response.read().decode("utf-8"))
-            responses = list(itertools.chain(responses.copy(), response_json))
+        try:
+            url_to_call = url_details["base_url"]
+            response_call = urlopen(url=url_to_call)
+            response = json.loads(response_call.read().decode("utf-8"))
+            if len(response) > 0:
+                responses = list(itertools.chain(responses.copy(), response))
 
-    return responses
+        except Exception as e:
+            logger.error(f"Error calling the API in block 4: {e}")
 
-
-# res = urlopen(
-#     url="https://api.openf1.org/v1/car_data?driver_number=55&session_key=9159&speed>=315"
-# )
-# res_json = json.loads(res.read().decode("utf-8"))
-# print(pd.DataFrame(res_json))
+    return responses if responses else None
