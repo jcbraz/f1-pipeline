@@ -2,6 +2,7 @@ import json
 import logging
 import itertools
 import time
+import pandas as pd
 from urllib.request import urlopen
 from typing import Union, List
 from api.api_schemas import UrlDetailsSchema
@@ -84,3 +85,13 @@ def call_api(url_details: dict) -> Union[List[dict], None]:
             logger.error(f"Error calling the API in block 4: {e}")
 
     return responses if responses else None
+
+
+def normalize_df(df: pd.DataFrame, url_details: dict):
+
+    if "intervals" in url_details["base_url"]:
+        df_copy = df.copy()
+        df_copy["gap_to_leader"] = df_copy["gap_to_leader"].astype(str)
+        return df_copy
+    else:
+        return df

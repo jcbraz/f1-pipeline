@@ -4,13 +4,13 @@ import boto3
 import json
 import pandas as pd
 import pendulum
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel
 from io import BytesIO
 from airflow import DAG
-from airflow.operators.python import PythonVirtualenvOperator
+from airflow.operators.python import PythonOperator
 from airflow.exceptions import AirflowBadRequest
 from datetime import timedelta
-from utils.utils import call_api
+from utils.utils import call_api, normalize_df
 from api import api_schemas
 
 logger = logging.getLogger(__name__)
@@ -42,16 +42,17 @@ def fetch_and_validate_data(
     except AirflowBadRequest as e:
         logger.error(f"Error on the API call: {e}")
 
-    validated_data = []
-    for i, dict_item in enumerate(response_list):
-        try:
-            validated_item = schema(**dict_item)
-            logger.info(f"Data validated successfully for item {i}")
-            validated_data.append(validated_item)
-        except ValidationError as e:
-            logger.error(f"Validation error for item: {dict_item}\n{e}")
+    # validated_data = []
+    # for i, dict_item in enumerate(response_list):
+    #     try:
+    #         validated_item = schema(**dict_item)
+    #         logger.info(f"Data validated successfully for item {i}")
+    #         validated_data.append(validated_item)
+    #     except ValidationError as e:
+    #         logger.error(f"Validation error for item: {dict_item}\n{e}")
 
-    data_dict = [item.model_dump() for item in validated_data]
+    # data_dict = [item.model_dump() for item in validated_data]
+    data_dict = response_list.copy()
 
     if len(attributes_to_remove) > 0:
         for item in data_dict:
@@ -79,7 +80,7 @@ def fetch_and_store_dag(
 
         if not data_dict:
             raise AirflowBadRequest("No data fetched or properly validated from API!")
-        df = pd.DataFrame(data_dict)
+        df = normalize_df(pd.DataFrame(data_dict), url_details)
         serialized_data_buffer = BytesIO()
         df.to_parquet(serialized_data_buffer, compression="snappy")
 
@@ -145,18 +146,10 @@ with DAG(
             len(url_details) == len(schema_list) - 2
         ), "Different number of URLs and schemas!"
 
-        fetch_and_store_task_venv = PythonVirtualenvOperator(
+        fetch_and_store_task_venv = PythonOperator(
             task_id="fetch_and_store_task",
             python_callable=fetch_and_store_dag,
             op_args=[url_details, schema_list, "f1-bucket"],
-            requirements=[
-                "boto3==1.18.63",
-                "pydantic==2.7.0",
-                "pyarrow==16.0.0",
-                "pendulum==3.0.0",
-                "pandas==2.2.2",
-            ],
-            system_site_packages=False,
         )
 
     except Exception as e:
