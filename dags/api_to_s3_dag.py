@@ -11,7 +11,6 @@ from airflow.operators.python import PythonOperator
 from airflow.exceptions import AirflowBadRequest
 from datetime import timedelta
 from utils.utils import call_api, normalize_df
-from api import api_schemas
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -27,7 +26,6 @@ s3 = session.client("s3", endpoint_url="https://s3.cubbit.eu")
 
 def fetch_and_validate_data(
     url_details: dict,
-    schema: BaseModel,
     attributes_to_remove: list[str],
 ) -> dict:
 
@@ -42,16 +40,6 @@ def fetch_and_validate_data(
     except AirflowBadRequest as e:
         logger.error(f"Error on the API call: {e}")
 
-    # validated_data = []
-    # for i, dict_item in enumerate(response_list):
-    #     try:
-    #         validated_item = schema(**dict_item)
-    #         logger.info(f"Data validated successfully for item {i}")
-    #         validated_data.append(validated_item)
-    #     except ValidationError as e:
-    #         logger.error(f"Validation error for item: {dict_item}\n{e}")
-
-    # data_dict = [item.model_dump() for item in validated_data]
     data_dict = response_list.copy()
 
     if len(attributes_to_remove) > 0:
@@ -128,28 +116,10 @@ with DAG(
         if len(url_details) == 0:
             raise FileNotFoundError("No API details found!")
 
-        schema_list = [
-            api_schemas.DriverInfoSchema,
-            api_schemas.GapInfoSchema,
-            api_schemas.LapInfoSchema,
-            api_schemas.GapInfoSchema,
-            api_schemas.PitStopInfoSchema,
-            api_schemas.RaceControlInfoSchema,
-            api_schemas.TyreInfoSchema,
-            api_schemas.WeatherInfoSchema,
-            api_schemas.LapInfoSchema,
-            api_schemas.CarInfoSchema,
-            api_schemas.PositionInfoSchema,
-        ]
-
-        assert (
-            len(url_details) == len(schema_list) - 2
-        ), "Different number of URLs and schemas!"
-
         fetch_and_store_task_venv = PythonOperator(
             task_id="fetch_and_store_task",
             python_callable=fetch_and_store_dag,
-            op_args=[url_details, schema_list, "f1-bucket"],
+            op_args=[url_details, "f1-bucket"],
         )
 
     except Exception as e:
