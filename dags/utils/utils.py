@@ -91,7 +91,8 @@ def normalize_df(df: pd.DataFrame, url_details: dict):
 
     if "intervals" in url_details["base_url"]:
         df_copy = df.copy()
-        df_copy["gap_to_leader"] = df_copy["gap_to_leader"].astype(str)
+        cols_to_convert = ["gap_to_leader", "interval"]
+        df_copy[cols_to_convert] = df_copy[cols_to_convert].astype(str)
         return df_copy
     else:
         return df
