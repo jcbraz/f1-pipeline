@@ -56,23 +56,20 @@ def fetch_and_validate_data(
 
 def fetch_and_store_dag(
     urls_details: list[dict],
-    schemas: list[BaseModel],
     bucket_name: str,
 ) -> None:
 
-    for url_details, schema in zip(urls_details, schemas):
-        logger.info(f"Fetching data from {url_details['base_url']}...")
-        data_dict = fetch_and_validate_data(
-            url_details, schema, url_details["attributes_to_remove"]
-        )
+    for details in urls_details:
+        logger.info(f"Fetching data from {details['base_url']}...")
+        data_dict = fetch_and_validate_data(details, details["attributes_to_remove"])
 
         if not data_dict:
             raise AirflowBadRequest("No data fetched or properly validated from API!")
-        df = normalize_df(pd.DataFrame(data_dict), url_details)
+        df = normalize_df(pd.DataFrame(data_dict), details)
         serialized_data_buffer = BytesIO()
         df.to_parquet(serialized_data_buffer, compression="snappy")
 
-        base_url_without_query = url_details["base_url"].split("?")[0]
+        base_url_without_query = details["base_url"].split("?")[0]
         try:
             s3.put_object(
                 Bucket=bucket_name,
