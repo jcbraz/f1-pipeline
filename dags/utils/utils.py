@@ -71,7 +71,7 @@ def call_api(url_details: dict) -> Union[List[dict], None]:
                                                 )
                                             )
                                             logger.info(
-                                                f"{url_to_call} response appended to responses."
+                                                f"{url_to_call} response appended to responses. Responses current length: {len(responses)}"
                                             )
                                         except Exception as e:
                                             logger.error(
