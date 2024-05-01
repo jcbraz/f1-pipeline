@@ -10,6 +10,10 @@
         ]
     },
     {
+        "base_url": "https://api.openf1.org/v1/sessions",
+        "attributes_to_remove": []
+    },
+    {
         "base_url": "https://api.openf1.org/v1/intervals",
         "attributes_to_remove": [],
         "session_keys_range": {

@@ -4,7 +4,6 @@ import boto3
 import json
 import pandas as pd
 import pendulum
-from pydantic import BaseModel
 from io import BytesIO
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -31,7 +30,7 @@ def fetch_and_validate_data(
 
     response_list = []
     try:
-        response_list = call_api(url_details)
+        response_list = call_api(url_details=url_details)
         if not response_list:
             raise AirflowBadRequest("No data fetched from API!")
         logger.info(
