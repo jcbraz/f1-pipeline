@@ -1,5 +1,13 @@
 [
     {
+        "base_url": "https://api.openf1.org/v1/position",
+        "attributes_to_remove": [],
+        "driver_numbers_range": {
+            "start": 1,
+            "end": 500
+        }
+    },
+    {
         "base_url": "https://api.openf1.org/v1/drivers",
         "attributes_to_remove": [
             "broadcast_name",
