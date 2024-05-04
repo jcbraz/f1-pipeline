@@ -130,7 +130,7 @@ def call_api(url_details: dict) -> Union[List[dict], None]:
                         responses = list(itertools.chain(responses.copy(), response))
                         logger.info(f"{url_to_call} response appended to responses.")
 
-                time.sleep(1.5)
+                time.sleep(2)
             except Exception as e:
                 logger.error(f"Error calling the API in block 3: {e}")
     else:
