@@ -1,19 +1,12 @@
-import boto3
+import os
 import logging
+import pendulum
+import clickhouse_connect
+from clickhouse_driver import Client
+from itertools import chain
 from pyspark import SparkContext
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import create_map, col, lit, monotonically_increasing_id
-from itertools import chain
-import clickhouse_connect
-
-# if __name__ == '__main__':
-#     client = clickhouse_connect.get_client(
-#         host='jxcinbpb1q.europe-west4.gcp.clickhouse.cloud',
-#         user='default',
-#         password='_T8Yy.l03aiaj',
-#         secure=True
-#     )
-#     print("Result:", client.query("SELECT 1").result_set[0][0])
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -45,7 +38,7 @@ def calculate_positions(spark: SparkSession, df: DataFrame) -> DataFrame | None:
                 date, 
                 position,
                 ROW_NUMBER() OVER (PARTITION BY driver_number, session_key ORDER BY date DESC) as rn
-            FROM positions_table
+            FROM temp_positions_table
         )
         SELECT 
             driver_number, 
@@ -57,15 +50,18 @@ def calculate_positions(spark: SparkSession, df: DataFrame) -> DataFrame | None:
     """
 
     try:
-        if not spark.catalog.tableExists("positions"):
-            _ = spark.sql("DROP TABLE IF EXISTS positions")
-            df.select("*").write.saveAsTable("positons")
+        if not spark.catalog.tableExists("temp_positions_table"):
+            _ = spark.sql("DROP TABLE IF EXISTS temp_positions_table")
+            df.select("*").write.saveAsTable("temp_positions_table")
 
         sessions_final_positions_df = spark.sql(query)
         if sessions_final_positions_df:
             # Cast the date column to date type (convert into daily granularity)
             sessions_final_positions_df = sessions_final_positions_df.withColumn(
                 "date", sessions_final_positions_df["date"].cast("date")
+            )
+            sessions_final_positions_df = sessions_final_positions_df.withColumnRenamed(
+                "position", "final_position"
             )
             return sessions_final_positions_df
         else:
@@ -87,7 +83,7 @@ def calculate_race_points(
             [lit(x) for x in chain(*points_mapping.items())]
         )
         return latest_positions_df.select("*").withColumn(
-            "points", points_mapping_exp[col("position")]
+            "points_earned", points_mapping_exp[col("final_position")]
         )
     except Exception as e:
         logger.error("Error mapping and calculating race points!", e)
@@ -130,7 +126,7 @@ def add_weather_reference(
 def elaborate_race_results_ft(
     spark: SparkSession,
     parquet_file_paths: dict[str, str],
-) -> DataFrame:
+) -> DataFrame | None:
 
     points_dict = {
         1: 25,
@@ -180,7 +176,99 @@ def elaborate_race_results_ft(
         if not weather_referenced_scored_df:
             raise Exception("Error adding weather reference to the scored_df")
 
+        try:
+            weather_referenced_scored_df = (
+                weather_referenced_scored_df.withColumnRenamed(
+                    "session_key", "race_id"
+                ).withColumnRenamed("driver_number", "driver_id")
+            )
+        except Exception as e:
+            logger.error(
+                "Error renaming columns of the final dataframe. Check if the keys mentioned are available!"
+            )
+            return None
+
         return weather_referenced_scored_df
 
     except Exception as e:
         logger.error("Error elaborating the RaceResultsFT table", e)
+        return None
+
+
+def write_to_clickhouse(
+    clickhouse_client: Client,
+    df: DataFrame,
+    table_name: str,
+    column_types: dict | None = None,
+) -> str | None:
+
+    try:
+        df_pandas = df.toPandas()
+        query_summary = clickhouse_client.insert_df(
+            df=df_pandas, table=table_name, column_types=column_types
+        )
+        if not query_summary:
+            raise Exception("Error inserting pandas df in DW!")
+
+        return query_summary.query_id()
+
+    except Exception as e:
+        logger.error("Error writing to Clickhouse!", e)
+        return None
+
+
+def populate_results_facts_ft(
+    spark: SparkSession, clickhouse_client: Client, parquet_file_paths: dict[str, str]
+) -> str | None:
+    try:
+        final_df = elaborate_race_results_ft(
+            spark=spark, parquet_file_paths=parquet_file_paths
+        )
+        logger.info(final_df)
+        if not final_df:
+            raise Exception("Error elaborating df for ResultsFactsFT!")
+        return write_to_clickhouse(
+            clickhouse_client=clickhouse_client,
+            df=final_df,
+            table_name="ResultsFactsFT",
+        )
+    except Exception as e:
+        logger.error("Something went wrong populating the ResultsFactsFT!", e)
+        return None
+
+
+parquet_file_paths_dict = {
+    "positions": "./include/data/position.parquet",
+    "drivers": "./include/data/drivers.parquet",
+    "pits": "./include/data/pit.parquet",
+    "sessions": "./include/data/sessions.parquet",
+    "weather": "./include/data/weather.parquet",
+}
+
+
+if __name__ == "__main__":
+
+    SparkContext.setSystemProperty("spark.executor.memory", "2g")
+
+    spark = (
+        SparkSession.builder.master("local")
+        .appName("Colab")
+        .config("spark.ui.port", "4051")
+        .getOrCreate()
+    )
+    sc = spark.sparkContext
+
+    clickhouse_client = clickhouse_connect.get_client(
+        host=os.environ["CLICKHOUSE_HOST"],
+        user=os.environ["CLICKHOUSE_USER"],
+        password=os.environ["CLICKHOUSE_PASSWORD"],
+        secure=True,
+    )
+
+    res = populate_results_facts_ft(
+        spark=spark,
+        clickhouse_client=clickhouse_client,
+        parquet_file_paths=parquet_file_paths_dict,
+    )
+
+    print(res)
