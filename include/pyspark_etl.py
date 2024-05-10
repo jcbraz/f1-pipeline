@@ -223,8 +223,8 @@ def populate_results_facts_ft(
     try:
         final_df = elaborate_race_results_ft(
             spark=spark, parquet_file_paths=parquet_file_paths
-        )
-        logger.info(final_df)
+        ).dropDuplicates()
+
         if not final_df:
             raise Exception("Error elaborating df for ResultsFactsFT!")
         return write_to_clickhouse(
