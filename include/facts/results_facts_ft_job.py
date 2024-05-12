@@ -1,31 +1,15 @@
 import os
 import logging
-import pendulum
 import clickhouse_connect
 from clickhouse_driver import Client
 from itertools import chain
+from job_utils import write_to_clickhouse
 from pyspark import SparkContext
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import create_map, col, lit, monotonically_increasing_id
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-
-
-def drop_unwanted_cols(
-    spark: SparkSession, parquet_file_path: str, cols_to_drop: list[str]
-) -> DataFrame | None:
-    try:
-        df = spark.read.parquet(parquet_file_path)
-        try:
-            filtered_df = df.drop(*cols_to_drop)
-            return filtered_df
-        except Exception as e:
-            logger.error("Error droping unwanted cols", e)
-
-    except Exception as e:
-        logger.error("Error reading pit.parquet with Spark", e)
-        return None
 
 
 def calculate_positions(spark: SparkSession, df: DataFrame) -> DataFrame | None:
@@ -195,28 +179,6 @@ def elaborate_race_results_ft(
         return None
 
 
-def write_to_clickhouse(
-    clickhouse_client: Client,
-    df: DataFrame,
-    table_name: str,
-    column_types: dict | None = None,
-) -> str | None:
-
-    try:
-        df_pandas = df.toPandas()
-        query_summary = clickhouse_client.insert_df(
-            df=df_pandas, table=table_name, column_types=column_types
-        )
-        if not query_summary:
-            raise Exception("Error inserting pandas df in DW!")
-
-        return query_summary.query_id()
-
-    except Exception as e:
-        logger.error("Error writing to Clickhouse!", e)
-        return None
-
-
 def populate_results_facts_ft(
     spark: SparkSession, clickhouse_client: Client, parquet_file_paths: dict[str, str]
 ) -> str | None:
@@ -246,7 +208,7 @@ parquet_file_paths_dict = {
 }
 
 
-if __name__ == "__main__":
+def execute_results_facts_ft_job() -> None:
 
     SparkContext.setSystemProperty("spark.executor.memory", "2g")
 
@@ -256,6 +218,7 @@ if __name__ == "__main__":
         .config("spark.ui.port", "4051")
         .getOrCreate()
     )
+
     sc = spark.sparkContext
 
     clickhouse_client = clickhouse_connect.get_client(
@@ -272,3 +235,8 @@ if __name__ == "__main__":
     )
 
     print(res)
+
+    sc.stop()
+
+
+execute_results_facts_ft_job()
