@@ -1,6 +1,7 @@
 import logging
 import os
 import sys
+
 sys.path.append("/Users/jcbraz/Projects/f1-pipeline/include")
 import clickhouse_connect
 from pyspark import SparkContext
