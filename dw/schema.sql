@@ -11,8 +11,8 @@ PRIMARY KEY (driver_id, race_id, date);
 
 CREATE TABLE IF NOT EXISTS PitStopsFT (
     lap_number UInt8 NOT NULL,
-    stop_duration Float32 NOT NULL,
-    date Date NOT NULL,
+    pit_duration Float32 NOT NULL,
+    date DateTime NOT NULL,
     driver_id UInt8 NOT NULL,
     race_id UInt16 NOT NULL
 ) ENGINE = MergeTree()
