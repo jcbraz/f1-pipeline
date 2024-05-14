@@ -38,14 +38,14 @@ PRIMARY KEY (team_id);
 
 CREATE TABLE IF NOT EXISTS RacesDT (
   race_id UInt16,
-  name String NOT NULL,
+  race_name String NOT NULL,
+  circuit_name String NOT NULL,
   location Nullable(String),
   type String NOT NULL,
-  country_code Nullable(String),
-  gmt_offset Nullable(UInt8),
+  country_name Nullable(String),
   total_laps Nullable(UInt8),
-  date_start Date NOT NULL,
-  date_end Date NOT NULL
+  timestamp_start DateTime NOT NULL,
+  timestamp_end Date NOT NULL
 ) ENGINE = MergeTree()
 PRIMARY KEY (race_id);
 
