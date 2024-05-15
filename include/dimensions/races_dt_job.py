@@ -52,6 +52,7 @@ def elaborate_drivers_dt(
 
     except Exception as e:
         logger.error("Error elaborating the DriversDT table!", e)
+        return None
 
 
 def execute_races_dt_job() -> None:

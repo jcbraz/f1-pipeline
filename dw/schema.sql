@@ -49,14 +49,16 @@ CREATE TABLE IF NOT EXISTS RacesDT (
 ) ENGINE = MergeTree()
 PRIMARY KEY (race_id);
 
-CREATE TABLE IF NOT EXISTS WeathersDT (
+CREATE TABLE IF NOT EXISTS WeatherDT (
   weather_id UInt16,
   humidity Float32 NOT NULL,
   pressure Float32 NOT NULL,
   rainfall Float32 NOT NULL,
+  air_temperature Float32 NOT NULL,
   track_temperature Float32 NOT NULL,
   wind_speed Float32 NOT NULL,
-  wind_direction Float32 NOT NULL
+  wind_direction Float32 NOT NULL,
+  timestamp DateTime NOT NULL
 ) ENGINE = MergeTree()
 PRIMARY KEY (weather_id);
 
