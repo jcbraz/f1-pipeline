@@ -60,14 +60,16 @@ CREATE TABLE IF NOT EXISTS WeatherDT (
   wind_direction Float32 NOT NULL,
   timestamp DateTime NOT NULL
 ) ENGINE = MergeTree()
-PRIMARY KEY (weather_id);
+PRIMARY KEY (weather_id, timestamp);
 
-CREATE TABLE IF NOT EXISTS TyreContextsDT (
-  tyre_context_id UInt8,
+CREATE TABLE IF NOT EXISTS StintsDT (
+  stint_id UInt16,
+  stint_number UInt8 NOT NULL,
   compound String NOT NULL,
-  age_at_start Float32 NOT NULL,
-  lap_start UInt8 NOT NULL,
-  lap_end UInt8 NOT NULL,
-  stint_number UInt8 NOT NULL
+  tyre_age_at_start Float32 NOT NULL,
+  lap_start UInt16 NOT NULL,
+  lap_end UInt16 NOT NULL,
+  race_id UInt16 NOT NULL,
+  driver_id UInt8 NOT NULL
 ) ENGINE = MergeTree()
-PRIMARY KEY (tyre_context_id);
+PRIMARY KEY (stint_id);
