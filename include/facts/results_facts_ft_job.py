@@ -90,12 +90,26 @@ def add_weather_reference(
     current_race_df: DataFrame, weather_df: DataFrame
 ) -> DataFrame:
 
-    filtered_weather_df = weather_df.drop("session_key").drop("meeting_key")
+    agg_weather_df = (
+        weather_df.withColumn("date", weather_df["date"].cast("date"))
+        .groupBy("date")
+        .agg(
+            {
+                "humidity": "avg",
+                "pressure": "avg",
+                "rainfall": "avg",
+                "air_temperature": "avg",
+                "track_temperature": "avg",
+                "wind_speed": "avg",
+                "wind_direction": "avg",
+            }
+        )
+    ).withColumn("weather_id", monotonically_increasing_id())
+
+    filtered_weather_df = agg_weather_df.drop("session_key").drop("meeting_key")
 
     cols_to_drop = [
-        x
-        for x in filtered_weather_df.columns
-        if x not in current_race_df.columns and x != "id"
+        x for x in filtered_weather_df.columns if x not in ["date", "weather_id"]
     ]
 
     try:

@@ -11,36 +11,46 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
-def elaborate_weather_dt(
+def elaborate_daily_weather_dt(
     spark: SparkSession, weather_parquet_file_path: str
 ) -> DataFrame | None:
-
     try:
         weather_df = spark.read.parquet(weather_parquet_file_path)
         if not weather_df:
             raise Exception("Error reading weather parquet file!")
 
-        id_included_weather_df = weather_df.withColumn(
-            "weather_id", monotonically_increasing_id()
-        )
+        weather_df = weather_df.withColumn("date", weather_df["date"].cast("date"))
 
-        if id_included_weather_df:
-            cols_to_drop = ["session_key", "meeting_key"]
-            id_included_weather_df = id_included_weather_df.drop(*cols_to_drop)
-            id_included_weather_df = id_included_weather_df.withColumn(
-                "date", to_timestamp(id_included_weather_df.date)
-            ).withColumnRenamed("date", "timestamp")
+        agg_weather_df = (
+            weather_df.groupBy("date")
+            .agg(
+                {
+                    "humidity": "avg",
+                    "pressure": "avg",
+                    "rainfall": "avg",
+                    "air_temperature": "avg",
+                    "track_temperature": "avg",
+                    "wind_speed": "avg",
+                    "wind_direction": "avg",
+                }
+            )
+            .withColumnRenamed("avg(humidity)", "humidity")
+            .withColumnRenamed("avg(pressure)", "pressure")
+            .withColumnRenamed("avg(rainfall)", "rainfall")
+            .withColumnRenamed("avg(air_temperature)", "air_temperature")
+            .withColumnRenamed("avg(track_temperature)", "track_temperature")
+            .withColumnRenamed("avg(wind_speed)", "wind_speed")
+            .withColumnRenamed("avg(wind_direction)", "wind_direction")
+        ).withColumn("weather_id", monotonically_increasing_id())
 
-            return id_included_weather_df.dropDuplicates()
-        else:
-            raise Exception("Error elaborating weather_df!")
-
+        if agg_weather_df:
+            return agg_weather_df.dropDuplicates()
     except Exception as e:
-        logger.error("Error elaborating the WeatherDT table!", e)
+        logger.error("Error elaborating the DailyWeatherDT table!", e)
         return None
 
 
-def execute_weather_dt_job() -> None:
+def execute_daily_weather_dt_job() -> None:
 
     SparkContext.setSystemProperty("spark.executor.memory", "2g")
 
@@ -61,7 +71,7 @@ def execute_weather_dt_job() -> None:
         secure=True,
     )
 
-    weather_df = elaborate_weather_dt(
+    weather_df = elaborate_daily_weather_dt(
         spark=spark,
         weather_parquet_file_path="./include/data/weather.parquet",
     )
@@ -70,7 +80,7 @@ def execute_weather_dt_job() -> None:
         query_summary = write_to_clickhouse(
             clickhouse_client=clickhouse_client,
             df=weather_df,
-            table_name="WeatherDT",
+            table_name="DailyWeatherDT",
         )
         if query_summary:
             logger.info(f"Query summary: {query_summary}")
@@ -83,4 +93,4 @@ def execute_weather_dt_job() -> None:
     sc.stop()
 
 
-execute_weather_dt_job()
+execute_daily_weather_dt_job()
