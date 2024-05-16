@@ -1,12 +1,9 @@
 import logging
 import os
 import clickhouse_connect
-import sys
-
-sys.path.append("/Users/jcbraz/Projects/f1-pipeline/include")
 from pyspark import SparkContext
 from pyspark.sql import SparkSession, DataFrame
-from pyspark.sql.functions import to_timestamp, monotonically_increasing_id
+from pyspark.sql.functions import monotonically_increasing_id
 from job_utils import write_to_clickhouse
 
 
