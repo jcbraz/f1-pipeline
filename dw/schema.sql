@@ -86,15 +86,3 @@ CREATE TABLE IF NOT EXISTS StintsDT (
   driver_id UInt8 NOT NULL
 ) ENGINE = MergeTree()
 PRIMARY KEY (stint_id);
-
-CREATE VIEW IF NOT EXISTS DailyWeatherView AS
-SELECT DATE(timestamp) AS weather_date,
-  AVG(humidity) AS avg_humidity,
-  AVG(pressure) AS avg_pressure,
-  AVG(rainfall) AS avg_rainfall,
-  AVG(air_temperature) AS avg_air_temp,
-  AVG(track_temperature) AS avg_track_temp,
-  AVG(wind_speed) AS avg_wind_speed,
-  AVG(wind_direction) AS avg_wind_dir
-FROM WeatherDT
-GROUP BY weather_date
