@@ -46,21 +46,21 @@ def etl_clickhouse_to_pandas(table_name: str) -> None:
     elif table_name == "ResultsFactsDT":
         data = transform_results_facts_data(data)
 
-    data.to_csv(f"./outputs/{table_name}.csv", index=False)
+    data.to_csv(f"../outputs/{table_name}.csv", index=False)
     print(f"Data saved to ../outputs/{table_name}.csv")
 
 
 def exec_dw_to_files_dag() -> None:
 
     tables = [
-        # "DriversDT",
-        # "PitStopsFT",
+        "DriversDT",
+        "PitStopsFT",
         "RacesDT",
-        # "ResultsFactsFT",
-        # "StintsDT",
-        # "TeamsDT",
-        # "WeatherDT",
-        # "DailyWeatherDT",
+        "ResultsFactsFT",
+        "StintsDT",
+        "TeamsDT",
+        "WeatherDT",
+        "DailyWeatherDT",
     ]
 
     if not os.path.exists("../outputs"):
