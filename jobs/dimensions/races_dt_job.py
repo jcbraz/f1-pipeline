@@ -1,6 +1,8 @@
 import logging
 import os
 import clickhouse_connect
+import sys
+sys.path.append('/Users/jcbraz/Projects/f1-pipeline/jobs')
 from dataclasses import dataclass
 from pyspark import SparkContext
 from pyspark.sql import SparkSession, DataFrame

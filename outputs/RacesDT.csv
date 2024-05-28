@@ -1,138 +1,138 @@
 race_id,race_name,circuit_name,location,type,country_name,total_laps,timestamp_start,timestamp_end
-7763,Practice 2,Sakhir,Sakhir,Practice,Bahrain,,2023-02-24 08:00:00,2023-02-24
-7764,Practice 3,Sakhir,Sakhir,Practice,Bahrain,,2023-02-25 08:00:00,2023-02-25
-7765,Practice 1,Sakhir,Sakhir,Practice,Bahrain,,2023-03-03 12:30:00,2023-03-03
-7766,Practice 2,Sakhir,Sakhir,Practice,Bahrain,,2023-03-03 16:00:00,2023-03-03
-7767,Practice 3,Sakhir,Sakhir,Practice,Bahrain,,2023-03-04 12:30:00,2023-03-04
-7768,Qualifying,Sakhir,Sakhir,Qualifying,Bahrain,,2023-03-04 16:00:00,2023-03-04
-7772,Practice 1,Jeddah,Jeddah,Practice,Saudi Arabia,,2023-03-17 14:30:00,2023-03-17
-7773,Practice 2,Jeddah,Jeddah,Practice,Saudi Arabia,,2023-03-17 18:00:00,2023-03-17
-7774,Practice 3,Jeddah,Jeddah,Practice,Saudi Arabia,,2023-03-18 14:30:00,2023-03-18
-7775,Qualifying,Jeddah,Jeddah,Qualifying,Saudi Arabia,,2023-03-18 18:00:00,2023-03-18
-7779,Race,Jeddah,Jeddah,Race,Saudi Arabia,,2023-03-19 18:00:00,2023-03-19
-7780,Practice 1,Melbourne,Melbourne,Practice,Australia,,2023-03-31 03:30:00,2023-03-31
-7781,Practice 2,Melbourne,Melbourne,Practice,Australia,,2023-03-31 07:00:00,2023-03-31
-7782,Practice 3,Melbourne,Melbourne,Practice,Australia,,2023-04-01 03:30:00,2023-04-01
-7783,Qualifying,Melbourne,Melbourne,Qualifying,Australia,,2023-04-01 07:00:00,2023-04-01
-7787,Race,Melbourne,Melbourne,Race,Australia,,2023-04-02 07:00:00,2023-04-02
-7953,Race,Sakhir,Sakhir,Race,Bahrain,,2023-03-05 16:00:00,2023-03-05
-9063,Practice 1,Baku,Baku,Practice,Azerbaijan,,2023-04-28 11:30:00,2023-04-28
-9064,Qualifying,Baku,Baku,Qualifying,Azerbaijan,,2023-04-28 15:00:00,2023-04-28
-9069,Sprint,Baku,Baku,Race,Azerbaijan,,2023-04-29 15:30:00,2023-04-29
-9070,Race,Baku,Baku,Race,Azerbaijan,,2023-04-30 13:00:00,2023-04-30
-9071,Practice 1,Miami,Miami,Practice,United States,,2023-05-05 20:00:00,2023-05-05
-9072,Practice 2,Miami,Miami,Practice,United States,,2023-05-05 23:30:00,2023-05-06
-9073,Practice 3,Miami,Miami,Practice,United States,,2023-05-06 18:30:00,2023-05-06
-9074,Qualifying,Miami,Miami,Qualifying,United States,,2023-05-06 22:00:00,2023-05-06
-9078,Race,Miami,Miami,Race,United States,,2023-05-07 21:30:00,2023-05-07
-9087,Practice 1,Monte Carlo,Monaco,Practice,Monaco,,2023-05-26 13:30:00,2023-05-26
-9088,Practice 2,Monte Carlo,Monaco,Practice,Monaco,,2023-05-26 17:00:00,2023-05-26
-9089,Practice 3,Monte Carlo,Monaco,Practice,Monaco,,2023-05-27 12:30:00,2023-05-27
-9090,Qualifying,Monte Carlo,Monaco,Qualifying,Monaco,,2023-05-27 16:00:00,2023-05-27
-9094,Race,Monte Carlo,Monaco,Race,Monaco,,2023-05-28 15:00:00,2023-05-28
-9095,Practice 1,Catalunya,Barcelona,Practice,Spain,,2023-06-02 13:30:00,2023-06-02
-9096,Practice 2,Catalunya,Barcelona,Practice,Spain,,2023-06-02 17:00:00,2023-06-02
-9097,Practice 3,Catalunya,Barcelona,Practice,Spain,,2023-06-03 12:30:00,2023-06-03
-9098,Qualifying,Catalunya,Barcelona,Qualifying,Spain,,2023-06-03 16:00:00,2023-06-03
-9102,Race,Catalunya,Barcelona,Race,Spain,,2023-06-04 15:00:00,2023-06-04
-9103,Practice 1,Montreal,Montréal,Practice,Canada,,2023-06-16 19:30:00,2023-06-16
-9104,Practice 2,Montreal,Montréal,Practice,Canada,,2023-06-16 22:30:00,2023-06-17
-9105,Practice 3,Montreal,Montréal,Practice,Canada,,2023-06-17 18:30:00,2023-06-17
-9106,Qualifying,Montreal,Montréal,Qualifying,Canada,,2023-06-17 22:00:00,2023-06-17
-9110,Race,Montreal,Montréal,Race,Canada,,2023-06-18 20:00:00,2023-06-18
-9112,Qualifying,Spielberg,Spielberg,Qualifying,Austria,,2023-06-30 17:00:00,2023-06-30
-9117,Sprint,Spielberg,Spielberg,Race,Austria,,2023-07-01 16:30:00,2023-07-01
-9118,Race,Spielberg,Spielberg,Race,Austria,,2023-07-02 15:00:00,2023-07-02
-9119,Practice 1,Silverstone,Silverstone,Practice,Great Britain,,2023-07-07 13:30:00,2023-07-07
-9120,Practice 2,Silverstone,Silverstone,Practice,Great Britain,,2023-07-07 17:00:00,2023-07-07
-9121,Practice 3,Silverstone,Silverstone,Practice,Great Britain,,2023-07-08 12:30:00,2023-07-08
-9122,Qualifying,Silverstone,Silverstone,Qualifying,Great Britain,,2023-07-08 16:00:00,2023-07-08
-9126,Race,Silverstone,Silverstone,Race,Great Britain,,2023-07-09 16:00:00,2023-07-09
-9127,Practice 2,Hungaroring,Budapest,Practice,Hungary,,2023-07-21 17:00:00,2023-07-21
-9128,Practice 3,Hungaroring,Budapest,Practice,Hungary,,2023-07-22 12:30:00,2023-07-22
-9129,Qualifying,Hungaroring,Budapest,Qualifying,Hungary,,2023-07-22 16:00:00,2023-07-22
-9133,Race,Hungaroring,Budapest,Race,Hungary,,2023-07-23 15:00:00,2023-07-23
-9134,Practice 1,Spa-Francorchamps,Spa-Francorchamps,Practice,Belgium,,2023-07-28 13:30:00,2023-07-28
-9135,Qualifying,Spa-Francorchamps,Spa-Francorchamps,Qualifying,Belgium,,2023-07-28 17:00:00,2023-07-28
-9140,Sprint,Spa-Francorchamps,Spa-Francorchamps,Race,Belgium,,2023-07-29 17:05:00,2023-07-29
-9141,Race,Spa-Francorchamps,Spa-Francorchamps,Race,Belgium,,2023-07-30 15:00:00,2023-07-30
-9142,Practice 1,Zandvoort,Zandvoort,Practice,Netherlands,,2023-08-25 12:30:00,2023-08-25
-9143,Practice 2,Zandvoort,Zandvoort,Practice,Netherlands,,2023-08-25 16:00:00,2023-08-25
-9144,Practice 3,Zandvoort,Zandvoort,Practice,Netherlands,,2023-08-26 11:30:00,2023-08-26
-9145,Qualifying,Zandvoort,Zandvoort,Qualifying,Netherlands,,2023-08-26 15:00:00,2023-08-26
-9149,Race,Zandvoort,Zandvoort,Race,Netherlands,,2023-08-27 15:00:00,2023-08-27
-9150,Practice 1,Monza,Monza,Practice,Italy,,2023-09-01 13:30:00,2023-09-01
-9151,Practice 2,Monza,Monza,Practice,Italy,,2023-09-01 17:00:00,2023-09-01
-9152,Practice 3,Monza,Monza,Practice,Italy,,2023-09-02 12:30:00,2023-09-02
-9153,Qualifying,Monza,Monza,Qualifying,Italy,,2023-09-02 16:00:00,2023-09-02
-9157,Race,Monza,Monza,Race,Italy,,2023-09-03 15:00:00,2023-09-03
-9158,Practice 1,Singapore,Marina Bay,Practice,Singapore,,2023-09-15 11:30:00,2023-09-15
-9159,Practice 2,Singapore,Marina Bay,Practice,Singapore,,2023-09-15 15:00:00,2023-09-15
-9160,Practice 3,Singapore,Marina Bay,Practice,Singapore,,2023-09-16 11:30:00,2023-09-16
-9161,Qualifying,Singapore,Marina Bay,Qualifying,Singapore,,2023-09-16 15:00:00,2023-09-16
-9165,Race,Singapore,Marina Bay,Race,Singapore,,2023-09-17 14:00:00,2023-09-17
-9166,Practice 1,Suzuka,Suzuka,Practice,Japan,,2023-09-22 04:30:00,2023-09-22
-9167,Practice 2,Suzuka,Suzuka,Practice,Japan,,2023-09-22 08:00:00,2023-09-22
-9168,Practice 3,Suzuka,Suzuka,Practice,Japan,,2023-09-23 04:30:00,2023-09-23
-9169,Qualifying,Suzuka,Suzuka,Qualifying,Japan,,2023-09-23 08:00:00,2023-09-23
-9173,Race,Suzuka,Suzuka,Race,Japan,,2023-09-24 07:00:00,2023-09-24
-9174,Practice 1,Mexico City,Mexico City,Practice,Mexico,,2023-10-27 20:30:00,2023-10-27
-9175,Practice 2,Mexico City,Mexico City,Practice,Mexico,,2023-10-28 00:00:00,2023-10-28
-9176,Practice 3,Mexico City,Mexico City,Practice,Mexico,,2023-10-28 19:30:00,2023-10-28
-9177,Qualifying,Mexico City,Mexico City,Qualifying,Mexico,,2023-10-28 23:00:00,2023-10-29
-9181,Race,Mexico City,Mexico City,Race,Mexico,,2023-10-29 21:00:00,2023-10-29
-9182,Practice 1,Las Vegas,Las Vegas,Practice,United States,,2023-11-17 05:30:00,2023-11-17
-9183,Practice 2,Las Vegas,Las Vegas,Practice,United States,,2023-11-17 11:00:00,2023-11-17
-9184,Practice 3,Las Vegas,Las Vegas,Practice,United States,,2023-11-18 05:30:00,2023-11-18
-9189,Race,Las Vegas,Las Vegas,Race,United States,,2023-11-19 07:00:00,2023-11-19
-9190,Practice 1,Yas Marina Circuit,Yas Island,Practice,United Arab Emirates,,2023-11-24 10:30:00,2023-11-24
-9191,Practice 2,Yas Marina Circuit,Yas Island,Practice,United Arab Emirates,,2023-11-24 14:00:00,2023-11-24
-9192,Practice 3,Yas Marina Circuit,Yas Island,Practice,United Arab Emirates,,2023-11-25 11:30:00,2023-11-25
-9193,Qualifying,Yas Marina Circuit,Yas Island,Qualifying,United Arab Emirates,,2023-11-25 15:00:00,2023-11-25
-9197,Race,Yas Marina Circuit,Yas Island,Race,United Arab Emirates,,2023-11-26 14:00:00,2023-11-26
-9198,Practice 1,Interlagos,São Paulo,Practice,Brazil,,2023-11-03 15:30:00,2023-11-03
-9204,Sprint,Interlagos,São Paulo,Race,Brazil,,2023-11-04 19:30:00,2023-11-04
-9205,Race,Interlagos,São Paulo,Race,Brazil,,2023-11-05 18:00:00,2023-11-05
-9206,Practice 1,Austin,Austin,Practice,United States,,2023-10-20 19:30:00,2023-10-20
-9207,Qualifying,Austin,Austin,Qualifying,United States,,2023-10-20 23:00:00,2023-10-21
-9212,Sprint,Austin,Austin,Race,United States,,2023-10-22 00:00:00,2023-10-22
-9213,Race,Austin,Austin,Race,United States,,2023-10-22 21:00:00,2023-10-22
-9214,Practice 1,Lusail,Lusail,Practice,Qatar,,2023-10-06 15:30:00,2023-10-06
-9215,Qualifying,Lusail,Lusail,Qualifying,Qatar,,2023-10-06 19:00:00,2023-10-06
-9220,Sprint,Lusail,Lusail,Race,Qatar,,2023-10-07 19:30:00,2023-10-07
-9221,Race,Lusail,Lusail,Race,Qatar,,2023-10-08 19:00:00,2023-10-08
-9222,Practice 1,Sakhir,Sakhir,Practice,Bahrain,,2023-02-23 08:00:00,2023-02-23
-9223,Practice 1,Hungaroring,Budapest,Practice,Hungary,,2023-07-21 13:30:00,2023-07-21
-9278,Sprint Shootout,Baku,Baku,Qualifying,Azerbaijan,,2023-04-29 10:30:00,2023-04-29
-9282,Sprint Shootout,Spielberg,Spielberg,Qualifying,Austria,,2023-07-01 12:00:00,2023-07-01
-9286,Sprint Shootout,Spa-Francorchamps,Spa-Francorchamps,Qualifying,Belgium,,2023-07-29 12:00:00,2023-07-29
-9294,Sprint Shootout,Austin,Austin,Qualifying,United States,,2023-10-21 19:30:00,2023-10-21
-9298,Sprint Shootout,Lusail,Lusail,Qualifying,Qatar,,2023-10-07 15:20:00,2023-10-07
-9304,Qualifying,Interlagos,São Paulo,Qualifying,Brazil,,2023-11-03 19:00:00,2023-11-03
-9308,Sprint Shootout,Interlagos,São Paulo,Qualifying,Brazil,,2023-11-04 15:00:00,2023-11-04
-9314,Qualifying,Las Vegas,Las Vegas,Qualifying,United States,,2023-11-18 09:00:00,2023-11-18
-9465,Practice 1,Sakhir,Sakhir,Practice,Bahrain,,2024-02-29 12:30:00,2024-02-29
-9466,Practice 2,Sakhir,Sakhir,Practice,Bahrain,,2024-02-29 16:00:00,2024-02-29
-9467,Practice 3,Sakhir,Sakhir,Practice,Bahrain,,2024-03-01 13:30:00,2024-03-01
-9468,Qualifying,Sakhir,Sakhir,Qualifying,Bahrain,,2024-03-01 17:00:00,2024-03-01
-9472,Race,Sakhir,Sakhir,Race,Bahrain,,2024-03-02 16:00:00,2024-03-02
-9473,Practice 1,Jeddah,Jeddah,Practice,Saudi Arabia,,2024-03-07 14:30:00,2024-03-07
-9474,Practice 2,Jeddah,Jeddah,Practice,Saudi Arabia,,2024-03-07 18:00:00,2024-03-07
-9475,Practice 3,Jeddah,Jeddah,Practice,Saudi Arabia,,2024-03-08 14:30:00,2024-03-08
-9476,Qualifying,Jeddah,Jeddah,Qualifying,Saudi Arabia,,2024-03-08 18:00:00,2024-03-08
-9480,Race,Jeddah,Jeddah,Race,Saudi Arabia,,2024-03-09 18:00:00,2024-03-09
-9481,Practice 1,Melbourne,Melbourne,Practice,Australia,,2024-03-22 02:30:00,2024-03-22
-9482,Practice 2,Melbourne,Melbourne,Practice,Australia,,2024-03-22 06:00:00,2024-03-22
-9483,Practice 3,Melbourne,Melbourne,Practice,Australia,,2024-03-23 02:30:00,2024-03-23
-9484,Qualifying,Melbourne,Melbourne,Qualifying,Australia,,2024-03-23 06:00:00,2024-03-23
-9488,Race,Melbourne,Melbourne,Race,Australia,,2024-03-24 05:00:00,2024-03-24
-9489,Practice 1,Suzuka,Suzuka,Practice,Japan,,2024-04-05 04:30:00,2024-04-05
-9490,Practice 2,Suzuka,Suzuka,Practice,Japan,,2024-04-05 08:00:00,2024-04-05
-9491,Practice 3,Suzuka,Suzuka,Practice,Japan,,2024-04-06 04:30:00,2024-04-06
-9492,Qualifying,Suzuka,Suzuka,Qualifying,Japan,,2024-04-06 08:00:00,2024-04-06
-9496,Race,Suzuka,Suzuka,Race,Japan,,2024-04-07 07:00:00,2024-04-07
-9663,Practice 1,Shanghai,Shanghai,Practice,China,,2024-04-19 05:30:00,2024-04-19
-9664,Qualifying,Shanghai,Shanghai,Qualifying,China,,2024-04-20 09:00:00,2024-04-20
-9668,Sprint Qualifying,Shanghai,Shanghai,Qualifying,China,,2024-04-19 09:30:00,2024-04-19
-9672,Sprint,Shanghai,Shanghai,Race,China,,2024-04-20 05:00:00,2024-04-20
-9673,Race,Shanghai,Shanghai,Race,China,,2024-04-21 09:00:00,2024-04-21
+7763,Practice 2,Sakhir,Sakhir,Practice,Bahrain,,2023-02-24 08:00:00,2023-02-24 17:30:00
+7764,Practice 3,Sakhir,Sakhir,Practice,Bahrain,,2023-02-25 08:00:00,2023-02-25 17:30:00
+7765,Practice 1,Sakhir,Sakhir,Practice,Bahrain,,2023-03-03 12:30:00,2023-03-03 13:30:00
+7766,Practice 2,Sakhir,Sakhir,Practice,Bahrain,,2023-03-03 16:00:00,2023-03-03 17:00:00
+7767,Practice 3,Sakhir,Sakhir,Practice,Bahrain,,2023-03-04 12:30:00,2023-03-04 13:30:00
+7768,Qualifying,Sakhir,Sakhir,Qualifying,Bahrain,,2023-03-04 16:00:00,2023-03-04 17:00:00
+7772,Practice 1,Jeddah,Jeddah,Practice,Saudi Arabia,,2023-03-17 14:30:00,2023-03-17 15:30:00
+7773,Practice 2,Jeddah,Jeddah,Practice,Saudi Arabia,,2023-03-17 18:00:00,2023-03-17 19:00:00
+7774,Practice 3,Jeddah,Jeddah,Practice,Saudi Arabia,,2023-03-18 14:30:00,2023-03-18 15:30:00
+7775,Qualifying,Jeddah,Jeddah,Qualifying,Saudi Arabia,,2023-03-18 18:00:00,2023-03-18 19:00:00
+7779,Race,Jeddah,Jeddah,Race,Saudi Arabia,,2023-03-19 18:00:00,2023-03-19 20:00:00
+7780,Practice 1,Melbourne,Melbourne,Practice,Australia,,2023-03-31 03:30:00,2023-03-31 04:30:00
+7781,Practice 2,Melbourne,Melbourne,Practice,Australia,,2023-03-31 07:00:00,2023-03-31 08:00:00
+7782,Practice 3,Melbourne,Melbourne,Practice,Australia,,2023-04-01 03:30:00,2023-04-01 04:30:00
+7783,Qualifying,Melbourne,Melbourne,Qualifying,Australia,,2023-04-01 07:00:00,2023-04-01 08:00:00
+7787,Race,Melbourne,Melbourne,Race,Australia,,2023-04-02 07:00:00,2023-04-02 09:00:00
+7953,Race,Sakhir,Sakhir,Race,Bahrain,,2023-03-05 16:00:00,2023-03-05 18:00:00
+9063,Practice 1,Baku,Baku,Practice,Azerbaijan,,2023-04-28 11:30:00,2023-04-28 12:30:00
+9064,Qualifying,Baku,Baku,Qualifying,Azerbaijan,,2023-04-28 15:00:00,2023-04-28 16:00:00
+9069,Sprint,Baku,Baku,Race,Azerbaijan,,2023-04-29 15:30:00,2023-04-29 16:00:00
+9070,Race,Baku,Baku,Race,Azerbaijan,,2023-04-30 13:00:00,2023-04-30 15:00:00
+9071,Practice 1,Miami,Miami,Practice,United States,,2023-05-05 20:00:00,2023-05-05 21:00:00
+9072,Practice 2,Miami,Miami,Practice,United States,,2023-05-05 23:30:00,2023-05-06 00:30:00
+9073,Practice 3,Miami,Miami,Practice,United States,,2023-05-06 18:30:00,2023-05-06 19:30:00
+9074,Qualifying,Miami,Miami,Qualifying,United States,,2023-05-06 22:00:00,2023-05-06 23:00:00
+9078,Race,Miami,Miami,Race,United States,,2023-05-07 21:30:00,2023-05-07 23:30:00
+9087,Practice 1,Monte Carlo,Monaco,Practice,Monaco,,2023-05-26 13:30:00,2023-05-26 14:30:00
+9088,Practice 2,Monte Carlo,Monaco,Practice,Monaco,,2023-05-26 17:00:00,2023-05-26 18:00:00
+9089,Practice 3,Monte Carlo,Monaco,Practice,Monaco,,2023-05-27 12:30:00,2023-05-27 13:30:00
+9090,Qualifying,Monte Carlo,Monaco,Qualifying,Monaco,,2023-05-27 16:00:00,2023-05-27 17:00:00
+9094,Race,Monte Carlo,Monaco,Race,Monaco,,2023-05-28 15:00:00,2023-05-28 17:00:00
+9095,Practice 1,Catalunya,Barcelona,Practice,Spain,,2023-06-02 13:30:00,2023-06-02 14:30:00
+9096,Practice 2,Catalunya,Barcelona,Practice,Spain,,2023-06-02 17:00:00,2023-06-02 18:00:00
+9097,Practice 3,Catalunya,Barcelona,Practice,Spain,,2023-06-03 12:30:00,2023-06-03 13:30:00
+9098,Qualifying,Catalunya,Barcelona,Qualifying,Spain,,2023-06-03 16:00:00,2023-06-03 17:00:00
+9102,Race,Catalunya,Barcelona,Race,Spain,,2023-06-04 15:00:00,2023-06-04 17:00:00
+9103,Practice 1,Montreal,Montréal,Practice,Canada,,2023-06-16 19:30:00,2023-06-16 20:30:00
+9104,Practice 2,Montreal,Montréal,Practice,Canada,,2023-06-16 22:30:00,2023-06-17 00:00:00
+9105,Practice 3,Montreal,Montréal,Practice,Canada,,2023-06-17 18:30:00,2023-06-17 19:30:00
+9106,Qualifying,Montreal,Montréal,Qualifying,Canada,,2023-06-17 22:00:00,2023-06-17 23:00:00
+9110,Race,Montreal,Montréal,Race,Canada,,2023-06-18 20:00:00,2023-06-18 22:00:00
+9112,Qualifying,Spielberg,Spielberg,Qualifying,Austria,,2023-06-30 17:00:00,2023-06-30 18:00:00
+9117,Sprint,Spielberg,Spielberg,Race,Austria,,2023-07-01 16:30:00,2023-07-01 17:00:00
+9118,Race,Spielberg,Spielberg,Race,Austria,,2023-07-02 15:00:00,2023-07-02 17:00:00
+9119,Practice 1,Silverstone,Silverstone,Practice,Great Britain,,2023-07-07 13:30:00,2023-07-07 14:30:00
+9120,Practice 2,Silverstone,Silverstone,Practice,Great Britain,,2023-07-07 17:00:00,2023-07-07 18:00:00
+9121,Practice 3,Silverstone,Silverstone,Practice,Great Britain,,2023-07-08 12:30:00,2023-07-08 13:30:00
+9122,Qualifying,Silverstone,Silverstone,Qualifying,Great Britain,,2023-07-08 16:00:00,2023-07-08 17:00:00
+9126,Race,Silverstone,Silverstone,Race,Great Britain,,2023-07-09 16:00:00,2023-07-09 18:00:00
+9127,Practice 2,Hungaroring,Budapest,Practice,Hungary,,2023-07-21 17:00:00,2023-07-21 18:00:00
+9128,Practice 3,Hungaroring,Budapest,Practice,Hungary,,2023-07-22 12:30:00,2023-07-22 13:30:00
+9129,Qualifying,Hungaroring,Budapest,Qualifying,Hungary,,2023-07-22 16:00:00,2023-07-22 17:00:00
+9133,Race,Hungaroring,Budapest,Race,Hungary,,2023-07-23 15:00:00,2023-07-23 17:00:00
+9134,Practice 1,Spa-Francorchamps,Spa-Francorchamps,Practice,Belgium,,2023-07-28 13:30:00,2023-07-28 14:30:00
+9135,Qualifying,Spa-Francorchamps,Spa-Francorchamps,Qualifying,Belgium,,2023-07-28 17:00:00,2023-07-28 18:00:00
+9140,Sprint,Spa-Francorchamps,Spa-Francorchamps,Race,Belgium,,2023-07-29 17:05:00,2023-07-29 17:35:00
+9141,Race,Spa-Francorchamps,Spa-Francorchamps,Race,Belgium,,2023-07-30 15:00:00,2023-07-30 17:00:00
+9142,Practice 1,Zandvoort,Zandvoort,Practice,Netherlands,,2023-08-25 12:30:00,2023-08-25 13:30:00
+9143,Practice 2,Zandvoort,Zandvoort,Practice,Netherlands,,2023-08-25 16:00:00,2023-08-25 17:00:00
+9144,Practice 3,Zandvoort,Zandvoort,Practice,Netherlands,,2023-08-26 11:30:00,2023-08-26 12:30:00
+9145,Qualifying,Zandvoort,Zandvoort,Qualifying,Netherlands,,2023-08-26 15:00:00,2023-08-26 16:00:00
+9149,Race,Zandvoort,Zandvoort,Race,Netherlands,,2023-08-27 15:00:00,2023-08-27 17:00:00
+9150,Practice 1,Monza,Monza,Practice,Italy,,2023-09-01 13:30:00,2023-09-01 14:30:00
+9151,Practice 2,Monza,Monza,Practice,Italy,,2023-09-01 17:00:00,2023-09-01 18:00:00
+9152,Practice 3,Monza,Monza,Practice,Italy,,2023-09-02 12:30:00,2023-09-02 13:30:00
+9153,Qualifying,Monza,Monza,Qualifying,Italy,,2023-09-02 16:00:00,2023-09-02 17:00:00
+9157,Race,Monza,Monza,Race,Italy,,2023-09-03 15:00:00,2023-09-03 17:00:00
+9158,Practice 1,Singapore,Marina Bay,Practice,Singapore,,2023-09-15 11:30:00,2023-09-15 12:30:00
+9159,Practice 2,Singapore,Marina Bay,Practice,Singapore,,2023-09-15 15:00:00,2023-09-15 16:00:00
+9160,Practice 3,Singapore,Marina Bay,Practice,Singapore,,2023-09-16 11:30:00,2023-09-16 12:30:00
+9161,Qualifying,Singapore,Marina Bay,Qualifying,Singapore,,2023-09-16 15:00:00,2023-09-16 16:00:00
+9165,Race,Singapore,Marina Bay,Race,Singapore,,2023-09-17 14:00:00,2023-09-17 16:00:00
+9166,Practice 1,Suzuka,Suzuka,Practice,Japan,,2023-09-22 04:30:00,2023-09-22 05:30:00
+9167,Practice 2,Suzuka,Suzuka,Practice,Japan,,2023-09-22 08:00:00,2023-09-22 09:00:00
+9168,Practice 3,Suzuka,Suzuka,Practice,Japan,,2023-09-23 04:30:00,2023-09-23 05:30:00
+9169,Qualifying,Suzuka,Suzuka,Qualifying,Japan,,2023-09-23 08:00:00,2023-09-23 09:00:00
+9173,Race,Suzuka,Suzuka,Race,Japan,,2023-09-24 07:00:00,2023-09-24 09:00:00
+9174,Practice 1,Mexico City,Mexico City,Practice,Mexico,,2023-10-27 20:30:00,2023-10-27 21:30:00
+9175,Practice 2,Mexico City,Mexico City,Practice,Mexico,,2023-10-28 00:00:00,2023-10-28 01:00:00
+9176,Practice 3,Mexico City,Mexico City,Practice,Mexico,,2023-10-28 19:30:00,2023-10-28 20:30:00
+9177,Qualifying,Mexico City,Mexico City,Qualifying,Mexico,,2023-10-28 23:00:00,2023-10-29 00:00:00
+9181,Race,Mexico City,Mexico City,Race,Mexico,,2023-10-29 21:00:00,2023-10-29 23:00:00
+9182,Practice 1,Las Vegas,Las Vegas,Practice,United States,,2023-11-17 05:30:00,2023-11-17 06:30:00
+9183,Practice 2,Las Vegas,Las Vegas,Practice,United States,,2023-11-17 11:00:00,2023-11-17 12:30:00
+9184,Practice 3,Las Vegas,Las Vegas,Practice,United States,,2023-11-18 05:30:00,2023-11-18 06:30:00
+9189,Race,Las Vegas,Las Vegas,Race,United States,,2023-11-19 07:00:00,2023-11-19 09:00:00
+9190,Practice 1,Yas Marina Circuit,Yas Island,Practice,United Arab Emirates,,2023-11-24 10:30:00,2023-11-24 11:30:00
+9191,Practice 2,Yas Marina Circuit,Yas Island,Practice,United Arab Emirates,,2023-11-24 14:00:00,2023-11-24 15:00:00
+9192,Practice 3,Yas Marina Circuit,Yas Island,Practice,United Arab Emirates,,2023-11-25 11:30:00,2023-11-25 12:30:00
+9193,Qualifying,Yas Marina Circuit,Yas Island,Qualifying,United Arab Emirates,,2023-11-25 15:00:00,2023-11-25 16:00:00
+9197,Race,Yas Marina Circuit,Yas Island,Race,United Arab Emirates,,2023-11-26 14:00:00,2023-11-26 16:00:00
+9198,Practice 1,Interlagos,São Paulo,Practice,Brazil,,2023-11-03 15:30:00,2023-11-03 16:30:00
+9204,Sprint,Interlagos,São Paulo,Race,Brazil,,2023-11-04 19:30:00,2023-11-04 20:00:00
+9205,Race,Interlagos,São Paulo,Race,Brazil,,2023-11-05 18:00:00,2023-11-05 20:00:00
+9206,Practice 1,Austin,Austin,Practice,United States,,2023-10-20 19:30:00,2023-10-20 20:30:00
+9207,Qualifying,Austin,Austin,Qualifying,United States,,2023-10-20 23:00:00,2023-10-21 00:00:00
+9212,Sprint,Austin,Austin,Race,United States,,2023-10-22 00:00:00,2023-10-22 01:00:00
+9213,Race,Austin,Austin,Race,United States,,2023-10-22 21:00:00,2023-10-22 23:00:00
+9214,Practice 1,Lusail,Lusail,Practice,Qatar,,2023-10-06 15:30:00,2023-10-06 16:30:00
+9215,Qualifying,Lusail,Lusail,Qualifying,Qatar,,2023-10-06 19:00:00,2023-10-06 20:00:00
+9220,Sprint,Lusail,Lusail,Race,Qatar,,2023-10-07 19:30:00,2023-10-07 20:30:00
+9221,Race,Lusail,Lusail,Race,Qatar,,2023-10-08 19:00:00,2023-10-08 21:00:00
+9222,Practice 1,Sakhir,Sakhir,Practice,Bahrain,,2023-02-23 08:00:00,2023-02-23 17:30:00
+9223,Practice 1,Hungaroring,Budapest,Practice,Hungary,,2023-07-21 13:30:00,2023-07-21 14:30:00
+9278,Sprint Shootout,Baku,Baku,Qualifying,Azerbaijan,,2023-04-29 10:30:00,2023-04-29 11:14:00
+9282,Sprint Shootout,Spielberg,Spielberg,Qualifying,Austria,,2023-07-01 12:00:00,2023-07-01 12:44:00
+9286,Sprint Shootout,Spa-Francorchamps,Spa-Francorchamps,Qualifying,Belgium,,2023-07-29 12:00:00,2023-07-29 12:44:00
+9294,Sprint Shootout,Austin,Austin,Qualifying,United States,,2023-10-21 19:30:00,2023-10-21 20:14:00
+9298,Sprint Shootout,Lusail,Lusail,Qualifying,Qatar,,2023-10-07 15:20:00,2023-10-07 16:04:00
+9304,Qualifying,Interlagos,São Paulo,Qualifying,Brazil,,2023-11-03 19:00:00,2023-11-03 20:00:00
+9308,Sprint Shootout,Interlagos,São Paulo,Qualifying,Brazil,,2023-11-04 15:00:00,2023-11-04 15:44:00
+9314,Qualifying,Las Vegas,Las Vegas,Qualifying,United States,,2023-11-18 09:00:00,2023-11-18 10:00:00
+9465,Practice 1,Sakhir,Sakhir,Practice,Bahrain,,2024-02-29 12:30:00,2024-02-29 13:30:00
+9466,Practice 2,Sakhir,Sakhir,Practice,Bahrain,,2024-02-29 16:00:00,2024-02-29 17:00:00
+9467,Practice 3,Sakhir,Sakhir,Practice,Bahrain,,2024-03-01 13:30:00,2024-03-01 14:30:00
+9468,Qualifying,Sakhir,Sakhir,Qualifying,Bahrain,,2024-03-01 17:00:00,2024-03-01 18:00:00
+9472,Race,Sakhir,Sakhir,Race,Bahrain,,2024-03-02 16:00:00,2024-03-02 18:00:00
+9473,Practice 1,Jeddah,Jeddah,Practice,Saudi Arabia,,2024-03-07 14:30:00,2024-03-07 15:30:00
+9474,Practice 2,Jeddah,Jeddah,Practice,Saudi Arabia,,2024-03-07 18:00:00,2024-03-07 19:00:00
+9475,Practice 3,Jeddah,Jeddah,Practice,Saudi Arabia,,2024-03-08 14:30:00,2024-03-08 15:30:00
+9476,Qualifying,Jeddah,Jeddah,Qualifying,Saudi Arabia,,2024-03-08 18:00:00,2024-03-08 19:00:00
+9480,Race,Jeddah,Jeddah,Race,Saudi Arabia,,2024-03-09 18:00:00,2024-03-09 20:00:00
+9481,Practice 1,Melbourne,Melbourne,Practice,Australia,,2024-03-22 02:30:00,2024-03-22 03:30:00
+9482,Practice 2,Melbourne,Melbourne,Practice,Australia,,2024-03-22 06:00:00,2024-03-22 07:00:00
+9483,Practice 3,Melbourne,Melbourne,Practice,Australia,,2024-03-23 02:30:00,2024-03-23 03:30:00
+9484,Qualifying,Melbourne,Melbourne,Qualifying,Australia,,2024-03-23 06:00:00,2024-03-23 07:00:00
+9488,Race,Melbourne,Melbourne,Race,Australia,,2024-03-24 05:00:00,2024-03-24 07:00:00
+9489,Practice 1,Suzuka,Suzuka,Practice,Japan,,2024-04-05 04:30:00,2024-04-05 05:30:00
+9490,Practice 2,Suzuka,Suzuka,Practice,Japan,,2024-04-05 08:00:00,2024-04-05 09:00:00
+9491,Practice 3,Suzuka,Suzuka,Practice,Japan,,2024-04-06 04:30:00,2024-04-06 05:30:00
+9492,Qualifying,Suzuka,Suzuka,Qualifying,Japan,,2024-04-06 08:00:00,2024-04-06 09:00:00
+9496,Race,Suzuka,Suzuka,Race,Japan,,2024-04-07 07:00:00,2024-04-07 09:00:00
+9663,Practice 1,Shanghai,Shanghai,Practice,China,,2024-04-19 05:30:00,2024-04-19 06:30:00
+9664,Qualifying,Shanghai,Shanghai,Qualifying,China,,2024-04-20 09:00:00,2024-04-20 10:00:00
+9668,Sprint Qualifying,Shanghai,Shanghai,Qualifying,China,,2024-04-19 09:30:00,2024-04-19 10:14:00
+9672,Sprint,Shanghai,Shanghai,Race,China,,2024-04-20 05:00:00,2024-04-20 05:30:00
+9673,Race,Shanghai,Shanghai,Race,China,,2024-04-21 09:00:00,2024-04-21 11:00:00

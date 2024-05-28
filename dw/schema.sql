@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS RacesDT (
   country_name Nullable(String),
   total_laps Nullable(UInt8),
   timestamp_start DateTime NOT NULL,
-  timestamp_end Date NOT NULL
+  timestamp_end DateTime NOT NULL
 ) ENGINE = MergeTree()
 PRIMARY KEY (race_id);
 
